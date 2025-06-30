@@ -30,6 +30,9 @@ kotlin {
     }
 
     sourceSets {
+        all{
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
         commonMain.dependencies {
             //put your multiplatform dependencies here
             // Ktor Client
