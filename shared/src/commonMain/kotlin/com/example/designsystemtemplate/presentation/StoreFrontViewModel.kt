@@ -6,17 +6,11 @@ import com.rickclephas.kmp.observableviewmodel.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import org.koin.android.annotation.KoinViewModel
 
-
-//@KoinViewModel
 class StoreFrontViewModel(private val apiClient: ApiClient) :
     ViewModel() {
 
     private val _uiState = MutableStateFlow<StoreFrontUiState>(StoreFrontUiState.Loading)
-
-    // Publicly exposed StateFlow for the UI to observe.
-    // .asStateFlow() provides a read-only view of the state.
     val uiState: StateFlow<StoreFrontUiState> = _uiState.asStateFlow()
 
     init {
