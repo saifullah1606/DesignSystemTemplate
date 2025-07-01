@@ -102,10 +102,6 @@ import com.example.designsystemtemplate.presentation.StoreFrontUiState
 import com.example.designsystemtemplate.presentation.StoreFrontViewModel
 import org.koin.androidx.compose.koinViewModel
 
-/**
- * MainActivity for the Android application.
- * Sets up the Jetpack Compose UI and observes the [StoreFrontViewModel] state.
- */
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,7 +114,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-                    // Pass both uiState and viewModel to the StoreFrontScreen
                     StoreFrontScreen(uiState = uiState, viewModel = viewModel)
                 }
             }
@@ -126,17 +121,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/**
- * Composable function to display the Store Front UI based on the [StoreFrontUiState].
- * @param uiState The current UI state of the store front data.
- * @param viewModel The [StoreFrontViewModel] to interact with.
- */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StoreFrontScreen(
     uiState: StoreFrontUiState,
     viewModel: StoreFrontViewModel
-) { // Add viewModel parameter
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -209,13 +200,7 @@ fun StoreFrontScreen(
     }
 }
 
-/**
- * Composable function to display a single MainCategory as a card.
- * This card can expand to show its SubCategories.
- * @param mainCategory The [MainCategory] data to display.
- * @param viewModel The [StoreFrontViewModel] to interact with (now accessible).
- */
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun MainCategoryCard(
     mainCategory: MainCategory,
@@ -283,10 +268,7 @@ fun MainCategoryCard(
     }
 }
 
-/**
- * Composable function to display a single SubCategory item.
- * @param subCategory The [SubCategory] data to display.
- */
+
 @Composable
 fun SubCategoryItem(subCategory: SubCategory) {
     Column(
